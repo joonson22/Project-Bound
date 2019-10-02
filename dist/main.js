@@ -86,6 +86,39 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/controller.js":
+/*!***************************!*\
+  !*** ./src/controller.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\n\nfunction Controller(husky){\n    document.addEventListener('keydown', (e) => {\n      \n        switch (e.keyCode) {\n            case 37:\n                husky.moveLeft();\n                break;\n\n            case 38:\n                husky.moveUp();\n                break;\n\n            case 39:\n                husky.moveRight();\n                break;\n            case 40:\n                husky.moveDown();\n                break;\n        \n            \n        }\n    })\n}\n\nmodule.exports = Controller;\n\n//# sourceURL=webpack:///./src/controller.js?");
+
+/***/ }),
+
+/***/ "./src/game.js":
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const Husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\")\nconst Controller = __webpack_require__(/*! ./controller */ \"./src/controller.js\")\n\nfunction Game(ctx) {\n     husky = new Husky\n     controller = new Controller(husky)\n}\n\nlet lastTime = 0;\n\n\nGame.prototype.loop = function (timestamp) {\n    let deltaTime = timestamp - lastTime;\n    lastTime = timestamp\n        \n        ctx.clearRect(0,0,800,800);\n        husky.update(deltaTime);\n        husky.draw(ctx);\n        requestAnimationFrame(this.loop.bind(this))\n    }\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
+
+/***/ }),
+
+/***/ "./src/husky.js":
+/*!**********************!*\
+  !*** ./src/husky.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\n\nconst DEFAULTS = {\n    color: \"#505050\",\n    pos: [\n        800 / 2 - 100 / 2,\n        800 - 100 - 10\n    ],\n    vel: [2, 2],\n    width: 100,\n    height: 100,\n};\n\nfunction Husky(options) {\n    options = options || {};\n    options.color = DEFAULTS.COLOR;\n    options.pos = DEFAULTS.pos;\n    options.vel = DEFAULTS.vel;\n    options.width = DEFAULTS.width;\n    options.height = DEFAULTS.height;\n    \n    MovingObject.call(this, options);\n}\n\nUtil.inherits(Husky, MovingObject);\n\n\n\n\n\nmodule.exports = Husky;\n\n\n//# sourceURL=webpack:///./src/husky.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -93,7 +126,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    window.MovingObject = MovingObject;\n    let canvas = document.getElementById(\"game-canvas\");\n    window.ctx = canvas.getContext('2d');\n    \n    console.log(\"webpack is working\")\n\n})\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nconst StillObject = __webpack_require__(/*! ./still_object */ \"./src/still_object.js\");\nconst Husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nconst Controller = __webpack_require__(/*! ./controller */ \"./src/controller.js\")\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    let canvas = document.getElementById(\"game-canvas\");\n    ctx = canvas.getContext('2d');\n    window.MovingObject = MovingObject;\n    window.Husky = Husky;\n    window.StillObject = StillObject;\n    window.ctx = ctx;\n\n    const GAME_WIDTH = 800;\n    const GAME_HEIGHT = 800;\n\n    // let husky = new Husky({\n    //     color: \"#505050\",\n    //     pos: [\n    //         800 / 2 - 100 / 2,\n    //         800 - 100 - 10\n    //     ],\n    //     vel: [2, 2],\n    //     width: 100,\n    //     height: 100,\n    // })\n    // husky.draw(ctx);\n  \n    let game = new Game(ctx);\n    game.loop();\n\n    \n    \n\n    console.log(\"webpack is working\")\n\n})\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -104,7 +137,29 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/mo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function MovingObject(options) {\n    this.pos = options.pos;\n    this.vel = options.vel;\n    this.color = options.color\n}\n\nMovingObject.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.fillRect(200, 100, 100, 100); \n    ctx.fill();\n}\n\nMovingObject.prototype.move = function (ctx) {\n    this.pos[0] = this.pos[0] + this.vel[0]\n    this.pos[1] = this.pos[1] + this.vel[1]\n    this.draw(ctx);\n}\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("\nfunction MovingObject(options) {\n    this.pos = options.pos;\n    this.vel = options.vel;\n    this.color = options.color;\n    this.width = options.width;\n    this.height = options.height;\n}\n\n\n    MovingObject.prototype.draw = function (ctx) {\n        ctx.fillStyle = this.color;\n        ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);\n        ctx.fill();\n    }\n\n    MovingObject.prototype.moveLeft = function() {\n        this.pos[0] = this.pos[0] - this.vel[0]\n    }\n\n    MovingObject.prototype.moveRight = function() {\n        this.pos[0] = this.pos[0] + this.vel[0]\n    }\n    MovingObject.prototype.moveUp = function() {\n        this.pos[0] = this.pos[1] - this.vel[0]\n    }\n    MovingObject.prototype.moveDown = function() {\n        this.pos[0] = this.pos[0] + this.vel[0]\n    }\n\n\n    MovingObject.prototype.update = function (deltaTime) {\n        if (!deltaTime) return;\n        this.pos[0] += 5 / deltaTime;\n    }\n\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+
+/***/ }),
+
+/***/ "./src/still_object.js":
+/*!*****************************!*\
+  !*** ./src/still_object.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function StillObject (options) {\n    this.pos = options.pos;\n    this.color = options.color;\n}\n\nStillObject.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.fillRect(10, 20, 100, 100);\n    ctx.fill();\n}\n\nmodule.exports = StillObject;\n\n//# sourceURL=webpack:///./src/still_object.js?");
+
+/***/ }),
+
+/***/ "./src/util.js":
+/*!*********************!*\
+  !*** ./src/util.js ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const Util = {\n    inherits: function inherits(childClass, parentClass) {\n        childClass.prototype = Object.create(parentClass.prototype)\n        childClass.prototype.constructor = childClass;\n    }\n};\n\nmodule.exports = Util\n\n//# sourceURL=webpack:///./src/util.js?");
 
 /***/ })
 
