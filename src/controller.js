@@ -5,20 +5,18 @@ function Controller(husky){
       
         switch (e.keyCode) {
             case 37:
-                husky.moveLeft();
-                break;
+               return husky.moveLeft();
+                
 
             case 38:
-                husky.moveUp();
-                break;
+              return  husky.moveUp();
+                
 
             case 39:
-                husky.moveRight();
-                break;
+               return husky.moveRight();
+                
             case 40:
-                husky.moveDown();
-                break;
-        
+              return  husky.moveDown();
             
         }
     })
