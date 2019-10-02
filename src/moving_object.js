@@ -33,9 +33,9 @@ function MovingObject(options) {
 
         // if (!deltaTime) return;
             if (this.pos[0] < 0) {this.pos[0] = 0}
-            if (this.pos[0] > 700) {this.pos[0] = 700}
+            if (this.pos[0] > 750) {this.pos[0] = 750}
             if (this.pos[1] < 0) {this.pos[1] = 0}
-            if (this.pos[1] > 700) {this.pos[1] = 700}
+            if (this.pos[1] > 750) {this.pos[1] = 750}
         this.pos[0] / deltaTime;
         this.pos[1] / deltaTime;
 

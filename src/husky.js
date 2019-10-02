@@ -4,12 +4,12 @@ const Util = require('./util');
 const DEFAULTS = {
     color: "#505050",
     pos: [
-        800 / 2 - 100 / 2,
-        800 - 100 - 10
+        800 / 2 - 50 / 2,
+        800 - 50 - 10
     ],
     vel: [30, 30],
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
 };
 
 function Husky(options) {
