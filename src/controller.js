@@ -20,6 +20,26 @@ function Controller(husky){
             
         }
     })
+
+    document.addEventListener('keyup', (e) => {
+      
+        switch (e.keyCode) {
+            case 37:
+               return husky.stop();
+                
+
+            case 38:
+              return  husky.stop();
+                
+
+            case 39:
+               return husky.stop();
+                
+            case 40:
+              return  husky.stop();
+            
+        }
+    })
 }
 
 module.exports = Controller;
