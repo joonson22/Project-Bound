@@ -7,7 +7,7 @@ const DEFAULTS = {
         800 / 2 - 50 / 2,
         800 - 50 - 10
     ],
-    vel: [30,30],
+    vel: [50,50],
     width: 50,
     height: 50,
 };
@@ -19,9 +19,10 @@ function Husky(options) {
     options.vel = DEFAULTS.vel;
     options.width = DEFAULTS.width;
     options.height = DEFAULTS.height;
-    
     MovingObject.call(this, options);
 }
+
+
 
 Util.inherits(Husky, MovingObject);
 

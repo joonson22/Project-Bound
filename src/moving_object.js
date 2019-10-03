@@ -1,5 +1,6 @@
 
 function MovingObject(options) {
+    this.originalPos = options.pos
     this.pos = options.pos;
     this.vel = options.vel;
     this.color = options.color;
@@ -15,8 +16,14 @@ function MovingObject(options) {
         up: true,
         down: true
     }
+    this.reset = this.reset.bind(this);
+    this.draw = this.draw.bind(this);
 }
 
+    MovingObject.prototype.reset = function () {
+        this.pos = [375,740]
+        // debugger
+    }
 
     MovingObject.prototype.draw = function (ctx) {
         ctx.fillStyle = this.color;
@@ -76,7 +83,7 @@ function MovingObject(options) {
         if (this.movement.down) {
             this.pos[1] += velocityScaleY2
         }
-
+        
       
         // this.pos[0] += velocityScaleX
         // this.pos[1] += velocityScaleY

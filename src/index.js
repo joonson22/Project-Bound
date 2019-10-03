@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx = canvas.getContext('2d');
   
     let game = new Game(ctx);
+    // game.explode(ctx);
     game.loop();
 
     
