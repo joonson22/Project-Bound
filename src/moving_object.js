@@ -6,6 +6,7 @@ function MovingObject(options) {
     this.width = options.width;
     this.height = options.height;
     this.speed = [0,0]
+    
 }
 
 
@@ -18,19 +19,23 @@ function MovingObject(options) {
     MovingObject.prototype.moveLeft = function() {
        this.speed[0] = -this.vel[0]
        this.speed[1] = 0;
+        console.log(this.speed)
     }
 
     MovingObject.prototype.moveRight = function() {
         this.speed[0] = this.vel[0]
         this.speed[1] = 0
+        console.log(this.speed)
     }
     MovingObject.prototype.moveUp = function() {
         this.speed[0] = 0;
         this.speed[1] = -this.vel[1]
+        console.log(this.speed)
     }
     MovingObject.prototype.moveDown = function() {
         this.speed[0] = 0;
         this.speed[1] = this.vel[1]
+        console.log(this.speed)
     }
 
     MovingObject.prototype.stop = function() {

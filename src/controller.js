@@ -2,20 +2,20 @@ const husky = require('./husky');
 
 function Controller(husky){
     document.addEventListener('keydown', (e) => {
-      
+        
         switch (e.keyCode) {
-            case 37:
+            case 65:
                return husky.moveLeft();
                 
 
-            case 38:
+            case 87:
               return  husky.moveUp();
                 
 
-            case 39:
+            case 68:
                return husky.moveRight();
                 
-            case 40:
+            case 83:
               return  husky.moveDown();
             
         }
@@ -24,20 +24,25 @@ function Controller(husky){
     document.addEventListener('keyup', (e) => {
       
         switch (e.keyCode) {
-            case 37:
-               return husky.stop();
+            case 65:
+              if (husky.speed[0] < 0) {
+                return husky.stop();
+              }
                 
 
-            case 38:
+            case 87:
+            if (husky.speed[1] < 0) {
               return  husky.stop();
-                
+            }
 
-            case 39:
+            case 68:
+            if (husky.speed[0] > 0) {
                return husky.stop();
-                
-            case 40:
-              return  husky.stop();
-            
+            }
+            case 83:
+            if (husky.speed[1] > 0) {
+              return husky.stop();
+            }
         }
     })
 }
