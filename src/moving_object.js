@@ -5,8 +5,16 @@ function MovingObject(options) {
     this.color = options.color;
     this.width = options.width;
     this.height = options.height;
-    this.speed = [0,0]
-    
+    this.speedLeft = 0;
+    this.speedRight = 0;
+    this.speedUp = 0;
+    this.speedDown = 0;
+    this.movement = {
+        left: true,
+        right: true,
+        up: true,
+        down: true
+    }
 }
 
 
@@ -17,45 +25,54 @@ function MovingObject(options) {
     }
 
     MovingObject.prototype.moveLeft = function() {
-       this.speed[0] = -this.vel[0]
-       this.speed[1] = 0;
-        console.log(this.speed)
+       this.speedLeft = -this.vel[0]
     }
 
     MovingObject.prototype.moveRight = function() {
-        this.speed[0] = this.vel[0]
-        this.speed[1] = 0
-        console.log(this.speed)
+       this.speedRight = this.vel[0]
     }
     MovingObject.prototype.moveUp = function() {
-        this.speed[0] = 0;
-        this.speed[1] = -this.vel[1]
-        console.log(this.speed)
+        this.speedUp = -this.vel[0]
     }
     MovingObject.prototype.moveDown = function() {
-        this.speed[0] = 0;
-        this.speed[1] = this.vel[1]
-        console.log(this.speed)
+        this.speedDown = this.vel[0]
     }
 
-    MovingObject.prototype.stop = function() {
-        this.speed[0] = 0;
-        this.speed[1] = 0;
-    }
+    // MovingObject.prototype.stop = function() {
+    //     this.speed[0] = 0;
+    //     this.speed[1] = 0;
+    // }
+
     MovingObject.prototype.update = function (deltaTime) {
         if (!deltaTime) return;
         
-        let velocityScaleX = this.speed[0] / deltaTime;
-        let velocityScaleY = this.speed[1] / deltaTime;
+        let velocityScaleX = this.speedLeft / deltaTime;
+        let velocityScaleX2 = this.speedRight / deltaTime;
+        let velocityScaleY = this.speedUp / deltaTime;
+        let velocityScaleY2 = this.speedDown / deltaTime;
 
-            if (this.pos[0] < 0) {this.pos[0] = 0}
-            if (this.pos[0] > 750) {this.pos[0] = 750}
-            if (this.pos[1] < 0) {this.pos[1] = 0}
-            if (this.pos[1] > 750) {this.pos[1] = 750}
+        if (this.pos[0] < 0) {this.pos[0] = 0}
+        if (this.pos[0] > 750) {this.pos[0] = 750}
+        if (this.pos[1] < 0) {this.pos[1] = 0}
+        if (this.pos[1] > 750) {this.pos[1] = 750}
+        
+
+        if (this.movement.left) {
+            this.pos[0] += velocityScaleX
+        }
+        if (this.movement.right) {
+            this.pos[0] += velocityScaleX2
+        }
+        if (this.movement.up) {
+            this.pos[1] += velocityScaleY
+        }
+        if (this.movement.down) {
+            this.pos[1] += velocityScaleY2
+        }
 
       
-        this.pos[0] += velocityScaleX
-        this.pos[1] += velocityScaleY
+        // this.pos[0] += velocityScaleX
+        // this.pos[1] += velocityScaleY
 
     }
 

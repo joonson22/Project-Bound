@@ -5,19 +5,23 @@ function Controller(husky){
         
         switch (e.keyCode) {
             case 65:
-               return husky.moveLeft();
-                
+               husky.movement.left = true;
+               husky.moveLeft();
+               break;
 
             case 87:
-              return  husky.moveUp();
-                
+              husky.movement.up = true;
+              husky.moveUp();
+              break;
 
             case 68:
-               return husky.moveRight();
-                
+              husky.movement.right = true;
+              husky.moveRight();
+              break;
             case 83:
-              return  husky.moveDown();
-            
+              husky.movement.down = true;
+              husky.moveDown();
+              break;
         }
     })
 
@@ -25,24 +29,14 @@ function Controller(husky){
       
         switch (e.keyCode) {
             case 65:
-              if (husky.speed[0] < 0) {
-                return husky.stop();
-              }
-                
-
+              return husky.movement.left = false;  
             case 87:
-            if (husky.speed[1] < 0) {
-              return  husky.stop();
-            }
+            return husky.movement.up = false;  
 
             case 68:
-            if (husky.speed[0] > 0) {
-               return husky.stop();
-            }
+            return husky.movement.right = false;  
             case 83:
-            if (husky.speed[1] > 0) {
-              return husky.stop();
-            }
+            return husky.movement.down = false;  
         }
     })
 }
