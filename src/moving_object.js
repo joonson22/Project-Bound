@@ -38,10 +38,17 @@ function MovingObject(options) {
         this.speedDown = this.vel[0]
     }
 
-    // MovingObject.prototype.stop = function() {
-    //     this.speed[0] = 0;
-    //     this.speed[1] = 0;
-    // }
+    MovingObject.prototype.checkCollision = function (object) {
+        if (object.pos[0] < this.pos[0] + this.width &&
+            object.pos[0] + object.width > this.pos[0] &&
+            object.pos[1] < this.pos[1] + this.height &&
+            object.pos[1] + object.height > this.pos[1]
+            ) {
+                return true;
+            } else {
+                return false;
+            }
+    }
 
     MovingObject.prototype.update = function (deltaTime) {
         if (!deltaTime) return;
