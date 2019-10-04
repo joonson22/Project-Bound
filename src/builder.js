@@ -1,5 +1,8 @@
+const Explosion = require('./explosion');
+
 function buildLevel(level) {
     let blasts = [];
+    console.log(level)
     level.forEach((row, rowIndex) => {
         row.forEach((explosion, explosionIndex) => {
             if (explosion === 5) {
@@ -10,8 +13,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 300,
-                    delay: 290
+                    start: 700,
+                    delay: 3000,
+                    timer: 100
                 }))
             }
             else if (explosion === 4) {
@@ -22,8 +26,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 250,
-                    delay: 280
+                    start: 550,
+                    delay: 3000,
+                    timer: 100
                 }))
             }
             else if (explosion === 3) {
@@ -34,8 +39,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 200,
-                    delay: 270
+                    start: 400,
+                    delay: 3000,
+                    timer: 100
                 }))
             }
             else if (explosion === 2) {
@@ -46,8 +52,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 150,
-                    delay: 260
+                    start: 250,
+                    delay: 3000,
+                    timer: 100
                 }))
             }
             else if (explosion === 1) {
@@ -59,8 +66,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 100,
-                    delay: 250
+                    start: 100,
+                    delay: 3000,
+                    timer: 100
                 }))
             }
             else if (explosion === 6) {
@@ -72,8 +80,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 100,
-                    delay: 50
+                    start: 0,
+                    delay: 3000,
+                    timer: 500
                 }))
             }
             else if (explosion === 7) {
@@ -85,8 +94,9 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    timer: 200,
-                    delay: 120
+                    start: 0,
+                    delay: 2000,
+                    timer: 500
                 }))
             }
         })
@@ -94,3 +104,5 @@ function buildLevel(level) {
     // debugger
     return blasts;
 }
+
+module.exports.buildLevel = buildLevel

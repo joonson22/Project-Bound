@@ -7,7 +7,7 @@ const DEFAULTS = {
         800 / 2 - 50 / 2,
         800 - 50 - 10
     ],
-    vel: [50,50],
+    vel: [60,60],
     width: 50,
     height: 50,
 };

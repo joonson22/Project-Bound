@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/builder.js":
+/*!************************!*\
+  !*** ./src/builder.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const Explosion = __webpack_require__(/*! ./explosion */ \"./src/explosion.js\");\n\nfunction buildLevel(level) {\n    let blasts = [];\n    console.log(level)\n    level.forEach((row, rowIndex) => {\n        row.forEach((explosion, explosionIndex) => {\n            if (explosion === 5) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 700,\n                    delay: 3000,\n                    timer: 100\n                }))\n            }\n            else if (explosion === 4) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 550,\n                    delay: 3000,\n                    timer: 100\n                }))\n            }\n            else if (explosion === 3) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#FF5733\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 400,\n                    delay: 3000,\n                    timer: 100\n                }))\n            }\n            else if (explosion === 2) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 250,\n                    delay: 3000,\n                    timer: 100\n                }))\n            }\n            else if (explosion === 1) {\n                // console.log(rowIndex)\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 100,\n                    delay: 3000,\n                    timer: 100\n                }))\n            }\n            else if (explosion === 6) {\n                // console.log(rowIndex)\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 0,\n                    delay: 3000,\n                    timer: 500\n                }))\n            }\n            else if (explosion === 7) {\n                // console.log(rowIndex)\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    start: 0,\n                    delay: 2000,\n                    timer: 500\n                }))\n            }\n        })\n    })\n    // debugger\n    return blasts;\n}\n\nmodule.exports.buildLevel = buildLevel\n\n//# sourceURL=webpack:///./src/builder.js?");
+
+/***/ }),
+
 /***/ "./src/controller.js":
 /*!***************************!*\
   !*** ./src/controller.js ***!
@@ -97,6 +108,17 @@ eval("const husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\n\nf
 
 /***/ }),
 
+/***/ "./src/ending.js":
+/*!***********************!*\
+  !*** ./src/ending.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\n\nfunction Ending (options) {\n    this.color = \"#505050\";\n    this.pos = [\n        800 / 2 - 80 / 2,\n        10\n    ]\n    this.width = 80\n    this.height = 80\n}\n\nEnding.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);\n    ctx.fill();\n}\n\nmodule.exports = Ending;\n\n//# sourceURL=webpack:///./src/ending.js?");
+
+/***/ }),
+
 /***/ "./src/explosion.js":
 /*!**************************!*\
   !*** ./src/explosion.js ***!
@@ -104,7 +126,7 @@ eval("const husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\n\nf
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nconst StillObject = __webpack_require__(/*! ./still_object */ \"./src/still_object.js\")\nconst Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\n\nconst DEFAULTS = {\n    color: \"#505050\",\n    pos: [\n        10,10\n    ],\n    width: 100,\n    height: 100,\n};\n\nfunction Explosion(options) {\n    this.color = options.color\n    this.pos = options.pos\n    this.width = 160\n    this.height = 114\n    // options = options || {};\n    // options.color = DEFAULTS.COLOR;\n    // options.pos = DEFAULTS.pos;\n    // options.width = DEFAULTS.width;\n    // options.height = DEFAULTS.height;\n    // StillObject.call(this, options);\n    // this.pulse = this.pulse.bind(this);\n    this.active = false;\n    this.timer = options.timer\n    this.delay = options.delay\n    this.ogtime = options.timer\n\n}\n\n// Util.inherits(Explosion, StillObject);\nExplosion.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);\n    ctx.fill();\n}\n\nExplosion.prototype.update = function (deltaTime) {\n    \n    // console.log(this.timer)\n    // console.log(deltaTime);\n    this.timer -= deltaTime\n    // debugger\n    // console.log(this.timer)\n    if (this.timer < 0 && this.active === true) {\n        this.active = false;\n        this.timer = this.delay\n    }\n    \n    if (this.timer < 0 && this.active === false) {\n        this.active = true;\n        this.timer = 30\n    }\n}\n\n\n\n\nmodule.exports = Explosion;\n\n//# sourceURL=webpack:///./src/explosion.js?");
+eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\n\nfunction Explosion(options) {\n    this.color = options.color\n    this.pos = options.pos\n    this.width = 160\n    this.height = 114\n\n    this.active = false;\n    this.start = options.start\n    this.delay = options.delay\n    this.timer = options.timer\n\n}\n\nExplosion.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);\n    ctx.fill();\n}\n\nExplosion.prototype.update = function (deltaTime) {\n    \n    // console.log(this.timer)\n    // console.log(deltaTime);\n    this.start -= deltaTime\n    // debugger\n    // console.log(this.start)\n    if (this.start < 0 && this.active === true) {\n        this.active = false;\n        this.start = this.delay\n    }\n    \n    if (this.start < 0 && this.active === false) {\n        this.active = true;\n        this.start = this.timer\n    }\n}\n\n\n\n\nmodule.exports = Explosion;\n\n//# sourceURL=webpack:///./src/explosion.js?");
 
 /***/ }),
 
@@ -115,7 +137,7 @@ eval("\nconst StillObject = __webpack_require__(/*! ./still_object */ \"./src/st
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\nconst Controller = __webpack_require__(/*! ./controller */ \"./src/controller.js\");\nconst Explosion = __webpack_require__(/*! ./explosion */ \"./src/explosion.js\");\n// const level1 = require(\"./levels/level1\")\n// import {buildLevel, level1} from \"./levels/level1\"\nconst levels = __webpack_require__(/*! ./levelss/level1 */ \"./src/levelss/level1.js\")\n\nfunction Game(ctx) {\n     this.husky = new Husky();\n    //  this.explosion = new Explosion;\n     this.controller = new Controller(this.husky)\n     //  this.allExplosions.push(this.explosion)\n     this.lives = 99\n     this.updateObjects = [this.husky]\n     this.gameObjects = [this.husky]\n     this.allExplosions = levels.buildLevel(levels.level1);\n     \n}\n\nGame.prototype.draw = function (ctx) {\n    this.gameObjects.forEach(object => {\n        object.draw(ctx)\n    })\n\n    this.allExplosions.forEach(explosion => {\n        if (explosion.active) {\n            explosion.draw(ctx)\n        }\n    })\n\n}\n\n\nGame.prototype.update = function (deltaTime) {\n    this.updateObjects.forEach(object => {\n        object.update(deltaTime)\n    })\n\n  \n    this.allExplosions.forEach(explosion => {\n        explosion.update(deltaTime)\n    })\n    \n}\n\n\n\nGame.prototype.checkCollisions = function () {\n    for (let i = 0; i < this.allExplosions.length; i++) {\n        if (this.husky.checkCollision(this.allExplosions[i]) && this.allExplosions[i].active) {\n            this.reset();\n        }\n    }\n}\n\nGame.prototype.reset = function () {\n    this.lives -= 1\n    console.log(this.lives)\n    this.husky.reset();\n    \n}\n\n\n\nlet lastTime = 0;\nGame.prototype.loop = function (timestamp) {\n    let deltaTime = timestamp - lastTime;\n    console.log(timestamp)\n    lastTime = timestamp\n    ctx.clearRect(0,0,800,800);\n    this.checkCollisions();\n    this.update(deltaTime)\n    this.draw(ctx)\n    requestAnimationFrame(this.loop.bind(this))\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
+eval("const Husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\nconst Controller = __webpack_require__(/*! ./controller */ \"./src/controller.js\");\n// const Explosion = require('./explosion');\nconst Ending = __webpack_require__(/*! ./ending */ \"./src/ending.js\")\nconst levels = __webpack_require__(/*! ./levels */ \"./src/levels.js\")\nconst builder = __webpack_require__(/*! ./builder */ \"./src/builder.js\")\nconst TileBuilder = __webpack_require__(/*! ./tilebuilder */ \"./src/tilebuilder.js\");\n\nfunction Game(ctx) {\n     this.husky = new Husky();\n     this.controller = new Controller(this.husky)\n     this.ending = new Ending();\n     this.lives = 99\n     this.tilebuilder = new TileBuilder;\n     this.updateObjects = [this.husky]\n     this.gameObjects = [this.husky, this.ending, this.tilebuilder]\n     this.allExplosions = builder.buildLevel(levels.level1)\n     this.currentLevel = 1\n     \n}\n\nGame.prototype.draw = function (ctx) {\n    this.gameObjects.forEach(object => {\n        object.draw(ctx)\n    })\n\n    this.allExplosions.forEach(explosion => {\n        if (explosion.active) {\n            explosion.draw(ctx)\n        }\n    })\n\n}\n\n\nGame.prototype.update = function (deltaTime) {\n    this.updateObjects.forEach(object => {\n        object.update(deltaTime)\n    })\n\n  \n    this.allExplosions.forEach(explosion => {\n        explosion.update(deltaTime)\n    })\n    \n}\n\nGame.prototype.loadLevel = function () {\n    \n    this.currentLevel += 1\n    // this.allExplosions = [];\n    this.allExplosions = builder.buildLevel(levels[`w${this.currentLevel}`])\n}\n\nGame.prototype.checkCollisions = function () {\n    for (let i = 0; i < this.allExplosions.length; i++) {\n        if (this.husky.checkCollision(this.allExplosions[i]) && this.allExplosions[i].active) {\n            this.reset();\n        }\n    }\n    if (this.husky.checkCollision(this.ending)) {\n        // debugger\n        this.loadLevel();\n        this.husky.reset();\n    }\n}\n\nGame.prototype.reset = function () {\n    this.lives -= 1\n    console.log(this.lives)\n    this.husky.reset();\n    \n}\n\n\n\nlet lastTime = 0;\nGame.prototype.loop = function (timestamp) {\n    let deltaTime = timestamp - lastTime;\n    lastTime = timestamp\n    ctx.clearRect(0,0,800,800);\n    this.checkCollisions();\n    this.update(deltaTime)\n    this.draw(ctx)\n    requestAnimationFrame(this.loop.bind(this))\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
 
 /***/ }),
 
@@ -126,7 +148,7 @@ eval("const Husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\ncon
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\n\nconst DEFAULTS = {\n    color: \"#505050\",\n    pos: [\n        800 / 2 - 50 / 2,\n        800 - 50 - 10\n    ],\n    vel: [50,50],\n    width: 50,\n    height: 50,\n};\n\nfunction Husky(options) {\n    options = options || {};\n    options.color = DEFAULTS.COLOR;\n    options.pos = DEFAULTS.pos;\n    options.vel = DEFAULTS.vel;\n    options.width = DEFAULTS.width;\n    options.height = DEFAULTS.height;\n    MovingObject.call(this, options);\n}\n\n\n\nUtil.inherits(Husky, MovingObject);\n\n\n\n\n\nmodule.exports = Husky;\n\n\n//# sourceURL=webpack:///./src/husky.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\n\nconst DEFAULTS = {\n    color: \"#505050\",\n    pos: [\n        800 / 2 - 50 / 2,\n        800 - 50 - 10\n    ],\n    vel: [60,60],\n    width: 50,\n    height: 50,\n};\n\nfunction Husky(options) {\n    options = options || {};\n    options.color = DEFAULTS.COLOR;\n    options.pos = DEFAULTS.pos;\n    options.vel = DEFAULTS.vel;\n    options.width = DEFAULTS.width;\n    options.height = DEFAULTS.height;\n    MovingObject.call(this, options);\n}\n\n\n\nUtil.inherits(Husky, MovingObject);\n\n\n\n\n\nmodule.exports = Husky;\n\n\n//# sourceURL=webpack:///./src/husky.js?");
 
 /***/ }),
 
@@ -137,18 +159,18 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/mo
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nconst StillObject = __webpack_require__(/*! ./still_object */ \"./src/still_object.js\");\nconst Husky = __webpack_require__(/*! ./husky */ \"./src/husky.js\");\nconst Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nconst Controller = __webpack_require__(/*! ./controller */ \"./src/controller.js\")\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    let canvas = document.getElementById(\"game-canvas\");\n    ctx = canvas.getContext('2d');\n  \n    let game = new Game(ctx);\n    // game.explode(ctx);\n    game.loop(0);\n\n    \n\n    console.log(\"webpack is working\")\n\n})\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    let canvas = document.getElementById(\"game-canvas\");\n    ctx = canvas.getContext('2d');\n  \n    let game = new Game(ctx);\n   \n    game.loop(0);\n\n    \n\n    console.log(\"webpack is working\")\n\n})\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/levelss/level1.js":
-/*!*******************************!*\
-  !*** ./src/levelss/level1.js ***!
-  \*******************************/
+/***/ "./src/levels.js":
+/*!***********************!*\
+  !*** ./src/levels.js ***!
+  \***********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("const Explosion = __webpack_require__(/*! ../explosion */ \"./src/explosion.js\")\n\nfunction buildLevel (level) {\n    let blasts = [];\n    level.forEach((row, rowIndex) => {\n        row.forEach((explosion, explosionIndex) => {\n            if (explosion === 5) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 300,\n                    delay: 290\n                }))\n            }\n            else if (explosion === 4) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 250,\n                    delay: 280\n                }))\n            }\n            else if (explosion === 3) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#FF5733\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 200,\n                    delay: 270\n                }))\n            }\n            else if (explosion === 2) {\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex\n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 150,\n                    delay: 260\n                }))\n            }\n           else if (explosion === 1) {\n                // console.log(rowIndex)\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex \n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 100,\n                    delay: 250\n                }))\n            }\n           else if (explosion === 6) {\n                // console.log(rowIndex)\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex \n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 100,\n                    delay: 50\n                }))\n            }\n           else if (explosion === 7) {\n                // console.log(rowIndex)\n                let x = 160 * explosionIndex\n                let y = 114 * rowIndex \n                blasts.push(new Explosion({\n                    color: \"#505050\",\n                    pos: [\n                        x, y\n                    ],\n                    timer: 200,\n                    delay: 120\n                }))\n            }\n        })\n    })\n    // debugger\n    return blasts;\n}\n\nconst level1 = [\n    [0, 0, 0, 0, 0],\n    [5, 5, 5, 5, 5],\n    [4, 4, 4, 4, 4],\n    [3, 3, 3, 3, 3],\n    [2, 2, 2, 2, 2],\n    [1, 1, 1, 1, 1],\n    [0, 0, 0, 0, 0]\n]\nconst level2 = [\n    [0, 0, 0, 0, 0],\n    [1, 1, 1, 1, 1],\n    [2, 2, 2, 2, 2],\n    [3, 3, 3, 3, 3],\n    [2, 2, 2, 2, 2],\n    [1, 1, 1, 1, 1],\n    [0, 0, 0, 0, 0]\n]\n\nconst level3 = [\n    [0, 0, 0, 0, 0],\n    [3, 3, 3, 3, 3],\n    [3, 3, 3, 3, 3],\n    [3, 3, 3, 3, 3],\n    [1, 1, 1, 1, 1],\n    [1, 1, 1, 1, 1],\n    [0, 0, 0, 0, 0]\n]\nconst level4 = [\n    [0, 0, 0, 0, 0],\n    [0, 0, 0, 0, 0],\n    [0, 0, 0, 0, 0],\n    [0, 0, 0, 0, 0],\n    [6, 6, 6, 6, 6],\n    [6, 6, 6, 6, 6],\n    [0, 0, 0, 0, 0]\n]\n\n\nmodule.exports.level1 = level1;\nmodule.exports.level2 = level2;\nmodule.exports.level3 = level3;\nmodule.exports.buildLevel = buildLevel;\n\n\n//# sourceURL=webpack:///./src/levelss/level1.js?");
+eval("const level1 = [\n    [0, 0, 0, 0, 0],\n    [5, 5, 5, 5, 5],\n    [4, 4, 4, 4, 4],\n    [3, 3, 3, 3, 3],\n    [2, 2, 2, 2, 2],\n    [1, 1, 1, 1, 1],\n    [0, 0, 0, 0, 0]\n]\nconst level2 = [\n    [0, 0, 0, 0, 0],\n    [6, 6, 6, 6, 6],\n    [7, 7, 7, 7, 7],\n    [6, 6, 6, 6, 6],\n    [7, 7, 7, 7, 7],\n    [6, 6, 6, 6, 6],\n    [0, 0, 0, 0, 0]\n]\n\nmodule.exports.level1 = level1;\nmodule.exports.level2 = level2;\n\n//# sourceURL=webpack:///./src/levels.js?");
 
 /***/ }),
 
@@ -163,14 +185,14 @@ eval("\nfunction MovingObject(options) {\n    this.originalPos = options.pos\n  
 
 /***/ }),
 
-/***/ "./src/still_object.js":
-/*!*****************************!*\
-  !*** ./src/still_object.js ***!
-  \*****************************/
+/***/ "./src/tilebuilder.js":
+/*!****************************!*\
+  !*** ./src/tilebuilder.js ***!
+  \****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function StillObject (options) {\n    this.pos = options.pos;\n    this.color = options.color;\n    this.width = options.width;\n    this.height = options.height;\n}\n\nStillObject.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);\n    ctx.fill();\n}\n\nmodule.exports = StillObject;\n\n//# sourceURL=webpack:///./src/still_object.js?");
+eval("function TileBuilder () {\n    this.sprite_size = 16;\n    this.tile_sheet = new Image();\n    this.tile_sheet.src = \"pokemon.png\";\n}\n\nTileBuilder.prototype.draw  = function(ctx) {\n    ctx.drawImage(this.tile_sheet, 14, 19, 50, 64,0,0,100,100)\n}\n\nmodule.exports = TileBuilder;\n\n//# sourceURL=webpack:///./src/tilebuilder.js?");
 
 /***/ }),
 

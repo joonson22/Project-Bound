@@ -7,5 +7,15 @@ const level1 = [
     [1, 1, 1, 1, 1],
     [0, 0, 0, 0, 0]
 ]
+const level2 = [
+    [0, 0, 0, 0, 0],
+    [6, 6, 6, 6, 6],
+    [7, 7, 7, 7, 7],
+    [6, 6, 6, 6, 6],
+    [7, 7, 7, 7, 7],
+    [6, 6, 6, 6, 6],
+    [0, 0, 0, 0, 0]
+]
 
 module.exports.level1 = level1;
+module.exports.level2 = level2;
