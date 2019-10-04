@@ -3,7 +3,7 @@ const Controller = require('./controller');
 const Explosion = require('./explosion');
 // const level1 = require("./levels/level1")
 // import {buildLevel, level1} from "./levels/level1"
-const levels = require('./levels/level1')
+const levels = require('./levelss/level1')
 
 function Game(ctx) {
      this.husky = new Husky();
@@ -14,6 +14,7 @@ function Game(ctx) {
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky]
      this.allExplosions = levels.buildLevel(levels.level1);
+     
 }
 
 Game.prototype.draw = function (ctx) {
@@ -64,6 +65,7 @@ Game.prototype.reset = function () {
 let lastTime = 0;
 Game.prototype.loop = function (timestamp) {
     let deltaTime = timestamp - lastTime;
+    console.log(timestamp)
     lastTime = timestamp
     ctx.clearRect(0,0,800,800);
     this.checkCollisions();

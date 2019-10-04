@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     let game = new Game(ctx);
     // game.explode(ctx);
-    game.loop();
+    game.loop(0);
 
     
 

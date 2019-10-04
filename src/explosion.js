@@ -14,7 +14,7 @@ const DEFAULTS = {
 function Explosion(options) {
     this.color = options.color
     this.pos = options.pos
-    this.width = 133
+    this.width = 160
     this.height = 114
     // options = options || {};
     // options.color = DEFAULTS.COLOR;
@@ -23,8 +23,10 @@ function Explosion(options) {
     // options.height = DEFAULTS.height;
     // StillObject.call(this, options);
     // this.pulse = this.pulse.bind(this);
-    this.active = true;
+    this.active = false;
     this.timer = options.timer
+    this.delay = options.delay
+    this.ogtime = options.timer
 
 }
 
@@ -39,15 +41,17 @@ Explosion.prototype.update = function (deltaTime) {
     
     // console.log(this.timer)
     // console.log(deltaTime);
-    this.timer -= 1
+    this.timer -= deltaTime
+    // debugger
+    // console.log(this.timer)
     if (this.timer < 0 && this.active === true) {
         this.active = false;
-        this.timer = 100
+        this.timer = this.delay
     }
     
     if (this.timer < 0 && this.active === false) {
         this.active = true;
-        this.timer = 70
+        this.timer = 30
     }
 }
 
