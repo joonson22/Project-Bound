@@ -49,7 +49,7 @@ Game.prototype.loadLevel = function () {
     
     this.currentLevel += 1
     // this.allExplosions = [];
-    this.allExplosions = builder.buildLevel(levels[`w${this.currentLevel}`])
+    this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`])
 }
 
 Game.prototype.checkCollisions = function () {
@@ -59,7 +59,7 @@ Game.prototype.checkCollisions = function () {
         }
     }
     if (this.husky.checkCollision(this.ending)) {
-        // debugger
+
         this.loadLevel();
         this.husky.reset();
     }
@@ -67,7 +67,7 @@ Game.prototype.checkCollisions = function () {
 
 Game.prototype.reset = function () {
     this.lives -= 1
-    console.log(this.lives)
+   
     this.husky.reset();
     
 }

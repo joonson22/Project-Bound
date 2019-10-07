@@ -21,11 +21,8 @@ Explosion.prototype.draw = function (ctx) {
 
 Explosion.prototype.update = function (deltaTime) {
     
-    // console.log(this.timer)
-    // console.log(deltaTime);
+   
     this.start -= deltaTime
-    // debugger
-    // console.log(this.start)
     if (this.start < 0 && this.active === true) {
         this.active = false;
         this.start = this.delay

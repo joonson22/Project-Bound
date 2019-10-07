@@ -1,3 +1,14 @@
+
+
+const base = [
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0]
+]
 const level1 = [
     [0, 0, 0, 0, 0],
     [5, 5, 5, 5, 5],
@@ -17,5 +28,6 @@ const level2 = [
     [0, 0, 0, 0, 0]
 ]
 
+module.exports.base = base;
 module.exports.level1 = level1;
 module.exports.level2 = level2;

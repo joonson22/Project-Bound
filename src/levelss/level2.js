@@ -53,7 +53,7 @@ function buildLevel(level) {
                 }))
             }
             else if (explosion === 1) {
-                // console.log(rowIndex)
+               
                 let x = 160 * explosionIndex
                 let y = 114 * rowIndex
                 blasts.push(new Explosion({
@@ -66,7 +66,7 @@ function buildLevel(level) {
                 }))
             }
             else if (explosion === 6) {
-                // console.log(rowIndex)
+               
                 let x = 160 * explosionIndex
                 let y = 114 * rowIndex
                 blasts.push(new Explosion({
@@ -79,7 +79,7 @@ function buildLevel(level) {
                 }))
             }
             else if (explosion === 7) {
-                // console.log(rowIndex)
+               
                 let x = 160 * explosionIndex
                 let y = 114 * rowIndex
                 blasts.push(new Explosion({
@@ -93,7 +93,7 @@ function buildLevel(level) {
             }
         })
     })
-    // debugger
+
     return blasts;
 }
 

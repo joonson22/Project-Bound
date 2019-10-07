@@ -22,7 +22,7 @@ function MovingObject(options) {
 
     MovingObject.prototype.reset = function () {
         this.pos = [375,740]
-        // debugger
+
     }
 
     MovingObject.prototype.draw = function (ctx) {
