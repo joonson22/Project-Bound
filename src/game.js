@@ -4,16 +4,16 @@ const Controller = require('./controller');
 const Ending = require('./ending')
 const levels = require('./levels')
 const builder = require("./builder")
-const TileBuilder = require('./tilebuilder');
+// const TileBuilder = require('./tilebuilder');
 
 function Game(ctx) {
      this.husky = new Husky();
      this.controller = new Controller(this.husky)
      this.ending = new Ending();
      this.lives = 99
-     this.tilebuilder = new TileBuilder;
+    //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
-     this.gameObjects = [this.husky, this.ending, this.tilebuilder]
+     this.gameObjects = [this.husky, this.ending]
      this.allExplosions = builder.buildLevel(levels.level1)
      this.currentLevel = 1
      
