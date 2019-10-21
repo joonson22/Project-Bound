@@ -16,6 +16,7 @@ function Game(ctx) {
      this.gameObjects = [this.husky, this.ending]
      this.allExplosions = builder.buildLevel(levels.level1)
      this.currentLevel = 1
+     this.count = 0;
      
 }
 
@@ -38,11 +39,20 @@ Game.prototype.update = function (deltaTime) {
         object.update(deltaTime)
     })
 
-  
-    this.allExplosions.forEach(explosion => {
-        explosion.update(deltaTime)
-    })
+    for (let i = 0; i < this.allExplosions.length; i++) {
+        this.allExplosions[i].update(deltaTime)
+
+    }
+
+    // this.allExplosions.forEach(explosion => {
+    //     explosion.update(deltaTime)
+    // })
     
+}
+
+Game.prototype.loadGame = function(ctx, deltaTime) {
+    this.draw(ctx)
+    this.update(deltaTime)
 }
 
 Game.prototype.loadLevel = function () {
@@ -52,10 +62,18 @@ Game.prototype.loadLevel = function () {
     this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`])
 }
 
+Game.prototype.resetLevel = function () {
+    
+    // this.currentLevel += 1
+    // this.allExplosions = [];
+    this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`])
+}
+
 Game.prototype.checkCollisions = function () {
     for (let i = 0; i < this.allExplosions.length; i++) {
         if (this.husky.checkCollision(this.allExplosions[i]) && this.allExplosions[i].active) {
             this.reset();
+        
         }
     }
     if (this.husky.checkCollision(this.ending)) {
@@ -72,10 +90,20 @@ Game.prototype.reset = function () {
     
 }
 
+Game.prototype.handleCount = function() {
+        this.count += 1
+    if (this.count === 500) {
+        this.count = 0
+        console.log('it has reset')
+        this.resetLevel();
+    }
+}
+
 
 
 let lastTime = 0;
 Game.prototype.loop = function (timestamp) {
+    this.handleCount();
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp
     ctx.clearRect(0,0,800,800);

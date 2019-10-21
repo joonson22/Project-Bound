@@ -5,8 +5,10 @@ function Explosion(options) {
     this.pos = options.pos
     this.width = 160
     this.height = 114
-
+    this.reset = options.reset
     this.active = false;
+    
+
     this.start = options.start
     this.delay = options.delay
     this.timer = options.timer

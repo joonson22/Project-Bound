@@ -15,7 +15,8 @@ function buildLevel(level) {
                     ],
                     start: 700,
                     delay: 3000,
-                    timer: 100
+                    timer: 100,
+                    reset: false
                 }))
             }
             else if (explosion === 4) {
@@ -28,7 +29,8 @@ function buildLevel(level) {
                     ],
                     start: 550,
                     delay: 3000,
-                    timer: 100
+                    timer: 100,
+                    reset: false
                 }))
             }
             else if (explosion === 3) {
@@ -41,7 +43,8 @@ function buildLevel(level) {
                     ],
                     start: 400,
                     delay: 3000,
-                    timer: 100
+                    timer: 100,
+                    reset: false
                 }))
             }
             else if (explosion === 2) {
@@ -54,7 +57,8 @@ function buildLevel(level) {
                     ],
                     start: 250,
                     delay: 3000,
-                    timer: 100
+                    timer: 100,
+                    reset: false
                 }))
             }
             else if (explosion === 1) {
@@ -68,7 +72,8 @@ function buildLevel(level) {
                     ],
                     start: 100,
                     delay: 3000,
-                    timer: 100
+                    timer: 100,
+                    reset: true
                 }))
             }
             else if (explosion === 6) {
