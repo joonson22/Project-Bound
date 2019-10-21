@@ -14,7 +14,7 @@ function buildLevel(level) {
                         x, y
                     ],
                     start: 700,
-                    delay: 3000,
+                    delay: 2500,
                     timer: 100,
                     reset: false
                 }))
@@ -28,7 +28,7 @@ function buildLevel(level) {
                         x, y
                     ],
                     start: 550,
-                    delay: 3000,
+                    delay: 2500,
                     timer: 100,
                     reset: false
                 }))
@@ -42,7 +42,7 @@ function buildLevel(level) {
                         x, y
                     ],
                     start: 400,
-                    delay: 3000,
+                    delay: 2500,
                     timer: 100,
                     reset: false
                 }))
@@ -56,7 +56,7 @@ function buildLevel(level) {
                         x, y
                     ],
                     start: 250,
-                    delay: 3000,
+                    delay: 2500,
                     timer: 100,
                     reset: false
                 }))
@@ -71,7 +71,7 @@ function buildLevel(level) {
                         x, y
                     ],
                     start: 100,
-                    delay: 3000,
+                    delay: 2500,
                     timer: 100,
                     reset: true
                 }))

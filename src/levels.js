@@ -10,7 +10,7 @@ const base = [
     [0, 0, 0, 0, 0]
 ]
 const level1 = {
-    count: 800,
+    count: 1400,
     level: [
         [0, 0, 0, 0, 0],
         [5, 5, 5, 5, 5],
