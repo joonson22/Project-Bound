@@ -85,9 +85,10 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    start: 0,
-                    delay: 3000,
-                    timer: 500
+                    start: 10,
+                    delay: 1000,
+                    timer: 100,
+                    reset: true
                 }))
             }
             else if (explosion === 7) {
@@ -99,9 +100,10 @@ function buildLevel(level) {
                     pos: [
                         x, y
                     ],
-                    start: 0,
-                    delay: 2000,
-                    timer: 500
+                    start: 100,
+                    delay: 1000,
+                    timer: 100,
+                    reset: false
                 }))
             }
         })

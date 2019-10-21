@@ -14,8 +14,8 @@ function Game(ctx) {
     //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
-     this.allExplosions = builder.buildLevel(levels.level1)
-     this.currentLevel = 1
+     this.allExplosions = builder.buildLevel(levels.level2)
+     this.currentLevel = 2
      this.count = 0;
      
 }
@@ -92,7 +92,7 @@ Game.prototype.reset = function () {
 
 Game.prototype.handleCount = function() {
         this.count += 1
-    if (this.count === 500) {
+    if (this.count === 100) {
         this.count = 0
         console.log('it has reset')
         this.resetLevel();
