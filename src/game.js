@@ -14,8 +14,8 @@ function Game(ctx) {
     //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
-     this.allExplosions = builder.buildLevel(levels.level2)
-     this.currentLevel = 2
+     this.allExplosions = builder.buildLevel(levels.level1.level)
+     this.currentLevel = 1
      this.count = 0;
      
 }
@@ -59,14 +59,14 @@ Game.prototype.loadLevel = function () {
     
     this.currentLevel += 1
     // this.allExplosions = [];
-    this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`])
+    this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`].level)
 }
 
 Game.prototype.resetLevel = function () {
     
     // this.currentLevel += 1
     // this.allExplosions = [];
-    this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`])
+    this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`].level)
 }
 
 Game.prototype.checkCollisions = function () {
@@ -92,7 +92,7 @@ Game.prototype.reset = function () {
 
 Game.prototype.handleCount = function() {
         this.count += 1
-    if (this.count === 100) {
+    if (this.count === levels[`level${this.currentLevel}`].count) {
         this.count = 0
         console.log('it has reset')
         this.resetLevel();
