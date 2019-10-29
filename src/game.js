@@ -21,6 +21,11 @@ function Game(ctx) {
 }
 
 Game.prototype.draw = function (ctx) {
+    let img = new Image ();
+    img.src = "dist/pokemontile.png"
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(img, 2, 2, 315, 249, 0, 0, 800, 650)
+
     this.gameObjects.forEach(object => {
         object.draw(ctx)
     })

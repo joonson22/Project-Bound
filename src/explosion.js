@@ -18,7 +18,7 @@ function Explosion(options) {
 Explosion.prototype.draw = function (ctx) {
     let img = new Image();
     img.src = "dist/pokeballs.png"
-    ctx.drawImage(img,192,45,114,111,this.pos[0], this.pos[1],this.width, this.height)
+    ctx.drawImage(img,13,114,73,75,this.pos[0], this.pos[1],this.width, this.height)
     // ctx.fillStyle = this.color;
     // ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
     // ctx.fill();
