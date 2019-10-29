@@ -16,9 +16,12 @@ function Explosion(options) {
 }
 
 Explosion.prototype.draw = function (ctx) {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
-    ctx.fill();
+    let img = new Image();
+    img.src = "dist/pokeballs.png"
+    ctx.drawImage(img,192,45,114,111,this.pos[0], this.pos[1],this.width, this.height)
+    // ctx.fillStyle = this.color;
+    // ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
+    // ctx.fill();
 }
 
 Explosion.prototype.update = function (deltaTime) {
