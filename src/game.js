@@ -24,7 +24,7 @@ Game.prototype.draw = function (ctx) {
     this.gameObjects.forEach(object => {
         object.draw(ctx)
     })
-
+    
     this.allExplosions.forEach(explosion => {
         if (explosion.active) {
             explosion.draw(ctx)
@@ -56,7 +56,7 @@ Game.prototype.loadGame = function(ctx, deltaTime) {
 }
 
 Game.prototype.loadLevel = function () {
-    
+    this.count = 0;
     this.currentLevel += 1
     // this.allExplosions = [];
     this.allExplosions = builder.buildLevel(levels[`level${this.currentLevel}`].level)
@@ -92,9 +92,11 @@ Game.prototype.reset = function () {
 
 Game.prototype.handleCount = function() {
         this.count += 1
+        // console.log(this.count)
+    
     if (this.count === levels[`level${this.currentLevel}`].count) {
         this.count = 0
-        console.log('it has reset')
+        // console.log('it has reset')
         this.resetLevel();
     }
 }
