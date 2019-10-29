@@ -26,9 +26,13 @@ function MovingObject(options) {
     }
 
     MovingObject.prototype.draw = function (ctx) {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
-        ctx.fill();
+        let img = new Image();
+        img.src = "dist/snorlax.png"
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(img, 1, 3, 63, 66, this.pos[0], this.pos[1], this.width, this.height)
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
+        // ctx.fill();
     }
 
     MovingObject.prototype.moveLeft = function() {
