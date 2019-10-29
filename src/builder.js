@@ -7,7 +7,7 @@ function buildLevel(level) {
         row.forEach((explosion, explosionIndex) => {
             if (explosion === 5) {
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#505050",
                     pos: [
@@ -21,7 +21,7 @@ function buildLevel(level) {
             }
             else if (explosion === 4) {
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#505050",
                     pos: [
@@ -35,7 +35,7 @@ function buildLevel(level) {
             }
             else if (explosion === 3) {
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#FF5733",
                     pos: [
@@ -49,7 +49,7 @@ function buildLevel(level) {
             }
             else if (explosion === 2) {
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#505050",
                     pos: [
@@ -64,7 +64,7 @@ function buildLevel(level) {
             else if (explosion === 1) {
                 
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#505050",
                     pos: [
@@ -79,7 +79,7 @@ function buildLevel(level) {
             else if (explosion === 6) {
                 
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#505050",
                     pos: [
@@ -94,7 +94,7 @@ function buildLevel(level) {
             else if (explosion === 7) {
                 
                 let x = 160 * explosionIndex
-                let y = 114 * rowIndex
+                let y = 92 * rowIndex
                 blasts.push(new Explosion({
                     color: "#505050",
                     pos: [

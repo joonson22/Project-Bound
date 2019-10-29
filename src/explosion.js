@@ -4,7 +4,7 @@ function Explosion(options) {
     this.color = options.color
     this.pos = options.pos
     this.width = 160
-    this.height = 114
+    this.height = 92
     this.reset = options.reset
     this.active = false;
     

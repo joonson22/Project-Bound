@@ -21,7 +21,7 @@ function MovingObject(options) {
 }
 
     MovingObject.prototype.reset = function () {
-        this.pos = [375,740]
+        this.pos = [375,590]
 
     }
 
@@ -68,7 +68,7 @@ function MovingObject(options) {
         if (this.pos[0] < 0) {this.pos[0] = 0}
         if (this.pos[0] > 750) {this.pos[0] = 750}
         if (this.pos[1] < 0) {this.pos[1] = 0}
-        if (this.pos[1] > 750) {this.pos[1] = 750}
+        if (this.pos[1] > 600) {this.pos[1] = 600}
         
 
         if (this.movement.left) {

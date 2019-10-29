@@ -3,11 +3,11 @@
 function Ending (options) {
     this.color = "#505050";
     this.pos = [
-        800 / 2 - 80 / 2,
+        800 / 2 - 50 / 2,
         10
     ]
-    this.width = 80
-    this.height = 80
+    this.width = 50
+    this.height = 50
 }
 
 Ending.prototype.draw = function (ctx) {
