@@ -110,6 +110,8 @@ Game.prototype.handleCount = function() {
 
 let lastTime = 0;
 Game.prototype.loop = function (timestamp) {
+    // let lives = document.getElementById('lives')
+    // lives.innerHTML = this.lives + ' lives'
     this.handleCount();
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp
