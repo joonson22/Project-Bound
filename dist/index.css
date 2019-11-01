@@ -133,10 +133,19 @@ a {
   margin-right: 0;
   /* font-weight: bold; */
   /* border: none; */
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
 
 }
 
+
+#gameOverbtn:active {
+  background-color: #bdbdbd;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 #gameOverBtn:hover {
+  background-color: #bdbdbd;
   cursor: pointer;
 }
 
@@ -160,7 +169,7 @@ a {
   padding: 20px;
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
-  height: 50%; /* Could be more or less, depending on screen size */
+  height: 45%; /* Could be more or less, depending on screen size */
 
 
   display: flex;
@@ -181,6 +190,7 @@ a {
 
 #gameOver-links a {
   margin: 0 2%;
+  margin-top: 4%;
 }
 /* ---------------------WIN MODAL--------------------------- */
 /* The Modal (background) */
