@@ -148,8 +148,8 @@ Game.prototype.loop = function (timestamp) {
     
     this.gameOver();
     // console.log(this.lives)
-    // let lives = document.getElementById('lives')
-    // lives.innerHTML = this.lives + ' lives'
+    let lives = document.getElementById('lives')
+    lives.innerHTML = this.lives + ' lives'
     this.handleCount();
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp
