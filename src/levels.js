@@ -100,6 +100,20 @@ const level7 = {
         [0, 0, 0, 0, 0]
     ]
 }
+const level8 = {
+    count: 0,
+    level: [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+}
+
+
 
 module.exports.base = base;
 module.exports.level1 = level1;
@@ -109,3 +123,4 @@ module.exports.level4 = level4;
 module.exports.level5 = level5;
 module.exports.level6 = level6;
 module.exports.level7 = level7;
+module.exports.level8 = level8;

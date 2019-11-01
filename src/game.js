@@ -14,8 +14,8 @@ function Game(ctx) {
     //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
-     this.allExplosions = builder.buildLevel(levels.level1.level)
-     this.currentLevel = 1
+     this.allExplosions = builder.buildLevel(levels.level7.level)
+     this.currentLevel = 7
      this.count = 0;
      this.gameOver = this.gameOver.bind(this);
 }
@@ -25,6 +25,7 @@ Game.prototype.draw = function (ctx) {
     img.src = "dist/pokemontile.png"
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(img, 2, 2, 315, 249, 0, 0, 800, 650)
+    if (this.currentLevel === 8) return;
     if (this.lives === 0) return;
     this.gameObjects.forEach(object => {
         object.draw(ctx)
@@ -40,6 +41,7 @@ Game.prototype.draw = function (ctx) {
 
 
 Game.prototype.update = function (deltaTime) {
+    if (this.currentLevel === 8) return;
     if (this.lives === 0) return;
     this.updateObjects.forEach(object => {
         object.update(deltaTime)
@@ -108,26 +110,33 @@ Game.prototype.handleCount = function() {
 }
 
 Game.prototype.gameOver = function() {
-    // Get the modal
-    let gamemodal = document.getElementById("gameOver");
-
-    // Get the button that opens the modal
-    let gamebtn = document.getElementById("gameOverBtn");
-
-
-    gamebtn.onclick = function () {
-        this.lives = 99
-        gamemodal.style.display = "none";
-    }
+    // get game over modal elements
+    let gameOverModal = document.getElementById("gameOver");
+    let gameOverbtn = document.getElementById("gameOverBtn");
+    // if 0 lives open game over modal
     if (this.lives === 0) {
         // console.log(this.lives)
-        gamemodal.style.display = "block";
+        gameOverModal.style.display = "block";
         let lives = document.getElementById('gameover-lives')
         lives.innerHTML = 'You made it to level ' + this.currentLevel
-    } else {
-        gamemodal.style.display = "none";
+    } 
+    // reset lives and close game over modal
+    gameOverbtn.onclick = function () {
+        this.lives = 99
+        gameOverModal.style.display = "none";
     }
-    // When the user clicks on the button, open the modal
+    
+    // get win modal elements
+    let winModal = document.getElementById("win");
+    
+    // if pass last level open modal
+    if (this.currentLevel === 8) {
+        winModal.style.display = "block";
+    } 
+    
+
+
+  
 
   
 }
