@@ -133,11 +133,6 @@ Game.prototype.gameOver = function() {
     if (this.currentLevel === 8) {
         winModal.style.display = "block";
     } 
-    
-
-
-  
-
   
 }
 

@@ -227,5 +227,13 @@ a {
 
 #win-links a {
   margin: 0 2%;
+  margin-top: 2%;
+}
+
+#win-title {
+    font-family: 'Indie Flower', cursive;
+    color: rgb(252, 26, 18);
+    margin: 0 0.5%;
+    /* margin-right: 20%; */
 }
 
