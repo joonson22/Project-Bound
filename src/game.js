@@ -3,7 +3,9 @@ const Controller = require('./controller');
 // const Explosion = require('./explosion');
 const Ending = require('./ending')
 const levels = require('./levels')
-const builder = require("./builder")
+const builder = require("./builder");
+const tilebuilder = require("./tilebuilder");
+
 // const TileBuilder = require('./tilebuilder');
 
 function Game(ctx) {
@@ -15,6 +17,8 @@ function Game(ctx) {
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
      this.allExplosions = builder.buildLevel(levels.level1.level)
+     this.allTiles = tilebuilder.tilebuilder(levels.level1.level)
+     this.nonTiles = tilebuilder.nontilebuilder(levels.level1.level)
      this.currentLevel = 1
      this.count = 0;
      this.gameOver = this.gameOver.bind(this);
@@ -22,10 +26,19 @@ function Game(ctx) {
 }
 
 Game.prototype.draw = function (ctx) {
-    let img = new Image ();
-    img.src = "dist/pokemontile.png"
-    ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(img, 2, 2, 315, 249, 0, 0, 800, 650)
+    // let img = new Image ();
+    // img.src = "dist/pokemontile.png"
+    // ctx.imageSmoothingEnabled = false;
+    // ctx.drawImage(img, 2, 2, 315, 249, 0, 0, 800, 650)
+
+
+    this.allTiles.forEach(tile => {
+        tile.draw(ctx);
+    })
+    this.nonTiles.forEach(tile => {
+        tile.draw2(ctx)
+    })
+    
     if (this.currentLevel === 8) return;
     if (this.lives === 0) return;
     this.gameObjects.forEach(object => {

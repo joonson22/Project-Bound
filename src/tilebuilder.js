@@ -1,24 +1,47 @@
-const levels = require('./levels')
+const Explosion = require('./explosion');
+const Tile = require('./tile');
 
-// function TileBuilder () {
-//     this.sprite_size = 16;
-//     this.tile_sheet = new Image();
-//     this.tile_sheet.src = "pokemon.png";
-//     this.base = levels.base;
-// }
+function tilebuilder(level) {
+    let tiles = [];
 
-// TileBuilder.prototype.draw  = function(ctx) {
+    level.forEach((row, rowIndex) => {
+        row.forEach((tile, tileIndex) => {
+            if (tile) {
+                let x = 160 * tileIndex
+                let y = 92 * rowIndex
+                tiles.push(new Tile({
+                    pos: [
+                        x, y
+                    ],
+                }))
+            } 
+            
+        })
+    })
 
-//     this.base.forEach((row, rowIndex) => {
-//         row.forEach((tile, tileIndex) => {
-//             let x = 160 * tileIndex
-//             let y = 114 * rowIndex
-//             ctx.drawImage(this.tile_sheet, 112, 4112, 176, 4176,x,y,400,400)
-//         })
-//     })
-    
-// }
+    return tiles;
+}
 
+function nontilebuilder(level) {
+    let tiles = [];
 
+    level.forEach((row, rowIndex) => {
+        row.forEach((tile, tileIndex) => {
+            if (!tile) {
+                let x = 160 * tileIndex
+                let y = 92 * rowIndex
+                tiles.push(new Tile({
+                    pos: [
+                        x, y
+                    ],
+                }))
+            } 
+            
+        })
+    })
 
-// module.exports = TileBuilder;
+    return tiles;
+}
+
+module.exports.tilebuilder = tilebuilder
+module.exports.nontilebuilder = nontilebuilder
