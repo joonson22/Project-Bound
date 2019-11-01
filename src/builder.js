@@ -19,6 +19,20 @@ function buildLevel(level) {
                     reset: false
                 }))
             }
+            else if (explosion === 4) {
+                let x = 160 * explosionIndex
+                let y = 92 * rowIndex
+                blasts.push(new Explosion({
+                    color: "#FF5733",
+                    pos: [
+                        x, y
+                    ],
+                    start: 550,
+                    delay: 2500,
+                    timer: 100,
+                    reset: false
+                }))
+            }
             else if (explosion === 3) {
                 let x = 160 * explosionIndex
                 let y = 92 * rowIndex

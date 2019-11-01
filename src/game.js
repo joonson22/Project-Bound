@@ -18,6 +18,7 @@ function Game(ctx) {
      this.currentLevel = 1
      this.count = 0;
      this.gameOver = this.gameOver.bind(this);
+     this.resetLives = this.resetLives.bind(this);
 }
 
 Game.prototype.draw = function (ctx) {
@@ -109,6 +110,10 @@ Game.prototype.handleCount = function() {
     }
 }
 
+Game.prototype.resetLives = function() {
+    this.lives = 99
+}
+
 Game.prototype.gameOver = function() {
     // get game over modal elements
     let gameOverModal = document.getElementById("gameOver");
@@ -120,12 +125,16 @@ Game.prototype.gameOver = function() {
         let lives = document.getElementById('gameover-lives')
         lives.innerHTML = 'You made it to level ' + this.currentLevel
     } 
+    let that = this;
     // reset lives and close game over modal
     gameOverbtn.onclick = function () {
-        this.lives = 99
+        that.resetLives()
         gameOverModal.style.display = "none";
+        // debugger
     }
     
+    
+
     // get win modal elements
     let winModal = document.getElementById("win");
     

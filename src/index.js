@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx = canvas.getContext('2d');
   
     let game = new Game(ctx);
-   
+    window.game = game;
     game.loop(0);
     
-    let bgm = new Audio();
-    bgm.src = 'dist/Pokémon Theme Song.mp3'
-    bgm.loop = true;
-    bgm.play();
+    // let bgm = new Audio();
+    // bgm.src = 'dist/Pokémon Theme Song.mp3'
+    // bgm.loop = true;
+    // bgm.play();
     
     // Get the modal
     let modal = document.getElementById("myModal");
