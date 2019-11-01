@@ -1,3 +1,6 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 #project {
     width: 100vw;
     height: 100vh;
@@ -21,6 +24,8 @@
 }
 
 h1 {
+    font-family: 'Indie Flower', cursive;
+    color: rgb(252, 26, 18);
     margin: 0 0.5%;
     margin-right: 39%;
 }
@@ -58,6 +63,7 @@ a {
 /* ---------------------INSTRUCTIONS MODAL--------------------------- */
 /* The Modal (background) */
 #myBtn {
+  font-family: 'Open Sans', sans-serif;
   display: block;
   font-size: 1.9em;
   /* margin-top: 0.67em; */
@@ -69,7 +75,8 @@ a {
 }
 
 #myBtn:hover {
-    cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
 }
 
 .modal {
@@ -92,7 +99,7 @@ a {
   padding: 20px;
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
-  height: 50%; /* Could be more or less, depending on screen size */
+  height: 35%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
