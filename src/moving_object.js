@@ -28,10 +28,12 @@ function MovingObject(options) {
     MovingObject.prototype.draw = function (ctx) {
         let img = new Image();
         // img.src = "dist/snorlax.png"
-        img.src = "dist/pikachu.png"
+        // img.src = "dist/pika.png"
+        img.src = "dist/pika5.png"
         ctx.imageSmoothingEnabled = false;
         // ctx.drawImage(img, 1, 3, 63, 66, this.pos[0], this.pos[1], this.width, this.height)
-        ctx.drawImage(img, 250, 150, 478, 564, this.pos[0], this.pos[1], this.width, this.height)
+        // ctx.drawImage(img, 250, 150, 478, 564, this.pos[0], this.pos[1], this.width, this.height)
+        ctx.drawImage(img, 30, 26, 41, 47, this.pos[0], this.pos[1], this.width, this.height)
         // ctx.drawImage(img,this.pos[0], this.pos[1], this.width, this.height)
         // ctx.fillStyle = this.color;
         // ctx.fillRect(this.pos[0], this.pos[1], this.width, this.height);
