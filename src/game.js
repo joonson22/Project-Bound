@@ -10,7 +10,7 @@ function Game(ctx) {
      this.husky = new Husky();
      this.controller = new Controller(this.husky)
      this.ending = new Ending();
-     this.lives = 1
+     this.lives = 99
     //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
