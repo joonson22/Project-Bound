@@ -14,8 +14,8 @@ function Game(ctx) {
     //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
-     this.allExplosions = builder.buildLevel(levels.level7.level)
-     this.currentLevel = 7
+     this.allExplosions = builder.buildLevel(levels.level1.level)
+     this.currentLevel = 1
      this.count = 0;
      this.gameOver = this.gameOver.bind(this);
 }
@@ -145,6 +145,7 @@ Game.prototype.gameOver = function() {
 
 let lastTime = 0;
 Game.prototype.loop = function (timestamp) {
+    
     this.gameOver();
     // console.log(this.lives)
     // let lives = document.getElementById('lives')

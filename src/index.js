@@ -8,7 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
    
     game.loop(0);
     
-
+    let bgm = new Audio();
+    bgm.src = 'dist/Pokémon Theme Song.mp3'
+    bgm.loop = true;
+    bgm.play();
+    
     // Get the modal
     let modal = document.getElementById("myModal");
 
