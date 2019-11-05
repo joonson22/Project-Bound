@@ -39,9 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    
-
-    
+    let introModal = document.getElementById("introModal");
+    let introbtn = document.getElementById("introBtn");
+    // When the user clicks on the button, open the modal
+    introbtn.onclick = function () {
+        introModal.style.display = "none";
+    }    
 
    
 
