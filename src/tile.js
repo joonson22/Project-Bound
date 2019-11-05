@@ -1,7 +1,7 @@
 function Tile(options) {
     this.pos = options.pos
     this.width = 160
-    this.height = 92
+    this.height = 93
 
 }
 
