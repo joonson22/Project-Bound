@@ -8,7 +8,7 @@ function tilebuilder(level) {
         row.forEach((tile, tileIndex) => {
             if (tile) {
                 let x = 160 * tileIndex
-                let y = 92 * rowIndex
+                let y = 93 * rowIndex
                 tiles.push(new Tile({
                     pos: [
                         x, y
@@ -29,7 +29,7 @@ function nontilebuilder(level) {
         row.forEach((tile, tileIndex) => {
             if (!tile) {
                 let x = 160 * tileIndex
-                let y = 92 * rowIndex
+                let y = 93 * rowIndex
                 tiles.push(new Tile({
                     pos: [
                         x, y
