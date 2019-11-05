@@ -39,7 +39,7 @@ Game.prototype.draw = function (ctx) {
         tile.draw2(ctx)
     })
     
-    if (this.currentLevel === 10) return;
+    if (this.currentLevel === 12) return;
     if (this.lives === 0) return;
     this.gameObjects.forEach(object => {
         object.draw(ctx)
@@ -55,7 +55,7 @@ Game.prototype.draw = function (ctx) {
 
 
 Game.prototype.update = function (deltaTime) {
-    if (this.currentLevel === 10) return;
+    if (this.currentLevel === 12) return;
     if (this.lives === 0) return;
     this.updateObjects.forEach(object => {
         object.update(deltaTime)
@@ -152,7 +152,7 @@ Game.prototype.gameOver = function() {
     let winModal = document.getElementById("win");
     
     // if pass last level open modal
-    if (this.currentLevel === 8) {
+    if (this.currentLevel === 12) {
         winModal.style.display = "block";
     } 
   

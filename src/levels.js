@@ -35,7 +35,21 @@ const level2 = {
     ]
 }
 
+
 const level3 = {
+    count: 125,
+    level: [
+        [0, 0, 0, 0, 0],
+        [1, 5, 1, 5, 1],
+        [5, 1, 5, 1, 5],
+        [1, 5, 1, 5, 1],
+        [5, 1, 5, 1, 5],
+        [1, 5, 1, 5, 1],
+        [0, 0, 0, 0, 0]
+    ]
+}
+
+const level4 = {
     count: 900,
     level: [
         [0, 0, 0, 0, 0],
@@ -49,7 +63,7 @@ const level3 = {
 }
 
 
-const level4 = {
+const level5 = {
     count: 100,
     level: [
         [0, 0, 0, 0, 0],
@@ -62,7 +76,7 @@ const level4 = {
     ]
 }
 
-const level5 = {
+const level6 = {
     count: 100,
     level: [
         [0, 0, 0, 0, 0],
@@ -75,7 +89,7 @@ const level5 = {
     ]
 }
 
-const level6 = {
+const level7 = {
     count: 100,
     level: [
         [0, 0, 0, 0, 0],
@@ -87,8 +101,20 @@ const level6 = {
         [0, 0, 0, 0, 0]
     ]
 }
+const level8 = {
+    count: 100,
+    level: [
+        [0, 0, 0, 0, 0],
+        [1, 5, 1, 5, 1],
+        [1, 5, 1, 5, 1],
+        [1, 5, 1, 5, 1],
+        [1, 5, 1, 5, 1],
+        [1, 5, 1, 5, 1],
+        [0, 0, 0, 0, 0]
+    ]
+}
 
-const level7 = {
+const level9 = {
     count: 75,
     level: [
         [0, 0, 0, 0, 0],
@@ -100,7 +126,7 @@ const level7 = {
         [0, 0, 0, 0, 0]
     ]
 }
-const level8 = {
+const level10 = {
     count: 100,
     level: [
         [0, 0, 0, 0, 0],
@@ -114,7 +140,7 @@ const level8 = {
 }
 
 
-const level9 = {
+const level11 = {
     count: 75,
     level: [
         [0, 0, 0, 0, 0],
@@ -126,7 +152,7 @@ const level9 = {
         [0, 0, 0, 0, 0]
     ]
 }
-const level10 = {
+const level12 = {
     count: 0,
     level: [
         [0, 0, 0, 0, 0],
@@ -152,3 +178,5 @@ module.exports.level7 = level7;
 module.exports.level8 = level8;
 module.exports.level9 = level9;
 module.exports.level10 = level10;
+module.exports.level11 = level11;
+module.exports.level12 = level12;
