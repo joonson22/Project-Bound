@@ -12,7 +12,7 @@ function Game(ctx) {
      this.husky = new Husky();
      this.controller = new Controller(this.husky)
      this.ending = new Ending();
-     this.lives = 99
+     this.lives = 99;
     //  this.tilebuilder = new TileBuilder;
      this.updateObjects = [this.husky]
      this.gameObjects = [this.husky, this.ending]
@@ -142,6 +142,8 @@ Game.prototype.gameOver = function() {
     // reset lives and close game over modal
     gameOverbtn.onclick = function () {
         that.resetLives()
+        that.currentLevel = 1;
+        that.allExplosions = builder.buildLevel(levels[`level${that.currentLevel}`].level)
         gameOverModal.style.display = "none";
         // debugger
     }
