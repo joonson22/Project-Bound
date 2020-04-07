@@ -13,6 +13,7 @@ This JavaScript game is based off a mini-game in an old starcraft custom-map. It
   * When player runs out of lives the game is over.
   
    ![](/dist/modal.png)
+#
    
    ![](/dist/gameplay.gif)
  
