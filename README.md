@@ -3,7 +3,7 @@
 ## Project Bound
 [Live Demo](https://joonson22.github.io/Project-Bound/)
 
-This JavaScript game is based off a mini-game in an old starcraft custom-map. The game is based off a 5x5 grid where PokeBalls constantly appear. The objective of the game is for the user to figure out the patterns of the PokeBalls and to navigate through to the next level without getting caught. When the players run out of lives, the game is over. Each level is designed by me with the idea of the first few levels being beginner levels and the later levels becoming more advanced. The patterns repeat themselves each level so that users can get the timing and the route they need to use to get to the next level.
+This JavaScript game is based off a mini-game in an old starcraft custom-map. The game is designed on a 5x5 grid where PokeBalls constantly appear. The objective of the game is for the user to figure out the patterns of the PokeBalls and to navigate through to the next level without getting caught. When the players run out of lives, the game is over. Each level is designed by me with the idea of the first few levels being beginner levels and the later levels becoming more advanced. The patterns repeat themselves each level so that users can get the timing and the route they need to use to get to the next level.
 
 ## Architecture and Technologies
   * Pure JavaScript for game loop and character movement
