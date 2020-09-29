@@ -26,10 +26,6 @@ function Game(ctx) {
 }
 
 Game.prototype.draw = function (ctx) {
-    // let img = new Image ();
-    // img.src = "dist/pokemontile.png"
-    // ctx.imageSmoothingEnabled = false;
-    // ctx.drawImage(img, 2, 2, 315, 249, 0, 0, 800, 650)
 
 
     this.allTiles.forEach(tile => {
@@ -164,7 +160,7 @@ Game.prototype.gameOver = function() {
 
 let lastTime = 0;
 Game.prototype.loop = function (timestamp) {
-    
+    console.log("this is efwfew") //webpack --watch
     this.gameOver();
     // console.log(this.lives)
     let lives = document.getElementById('lives')
