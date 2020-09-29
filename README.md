@@ -3,16 +3,20 @@
 ## Project Bound
 [Live Demo](https://joonson22.github.io/Project-Bound/)
 
-This JavaScript game is based off a mini-game in an old starcraft custom-map. It was made using raw JavaScript and HTML 5 Canvas
+This JavaScript game is based off a mini-game in an old starcraft custom-map. The game is based off a 5x5 grid where PokeBalls constantly appear. The objective of the game is for the user to figure out the patterns of the PokeBalls and to navigate through to the next level without getting caught. When the players run out of lives, the game is over. Each level is designed by me with the idea of the first few levels being beginner levels and the later levels becoming more advanced. The patterns repeat themselves each level so that users can get the timing and the route they need to use to get to the next level.
 
-## Features
-  * Instuction modal that teaches users how to play
-  * Users can move in every direction using wasd keys, including diagonals.
-  * Users must figure out patterns of explosions to reach the next level.
-  * Collisions with explosions will cause the player to reset.
-  * When player runs out of lives the game is over.
+## Architecture and Technologies
+  * Pure JavaScript for game loop and character movement
+  * HTML Canvas for rendering
+  * Webpack to bundle scripts together and convert JavaScript
   
-   ![](/dist/modal.png)
+## MVP and Features
+ 
+### Instruction Modal
+
+  # ![](/dist/modal.png)
+   
+ I created an instruction modal that explains the goal of the game and how to move your character. To achieve this modal I used DOM manipulation to grab the IDs of the modal, open button, and close button. I added an EventListener so when the page loads the instruction modal is already shown. I added an on click event to the start game button to set the modal display to "none" so users can close the modal. When the user wants to read the instructions again, they can click on the instruction buttons which sets the modal display to "block" so the modal shows up again.
    
 ```javascript
 document.addEventListener("DOMContentLoaded", function () {
@@ -49,8 +53,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }    
 })
 ```
+### Character Movement and Collision
 # ![](/dist/gameplay.gif)
-   
+
+Users can move in every direction using wasd keys, including diagonals. User movement is calculated by their current position plus/minus the velocity of the character and direction of the input divided by the delta time. User collision is detected through the user's position is within the bounds of the object's position such as the Pokeballs or the walls in the game. If a user positions overlaps with a Pokeball, the user will reset to the starting position.
+  
 ```javascript
 MovingObject.prototype.checkCollision = function (object) {
     if (object.pos[0] < this.pos[0] + this.width &&
@@ -91,8 +98,4 @@ MovingObject.prototype.update = function (deltaTime) {
     }
 }
 ```
- 
 
-## Technologies
-
-This game was made entirely using raw JavaScript and HTML 5 Canvas.
