@@ -77,11 +77,13 @@ a {
   margin-right: 0;
   font-weight: bold;
   border: none;
+  background-color: white;
 }
 
 #myBtn:hover {
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
+  background-color: rgb(230, 230, 230);
 }
 
 .modal {
